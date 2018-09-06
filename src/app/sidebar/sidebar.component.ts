@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { DataService } from '../data.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  @Output() eventClicked = new EventEmitter<Event>();
+	types$: Object;
+
+  constructor(private data: DataService) { }
 
   ngOnInit() {
+  	this.data.getTypes().subscribe(data => {
+  		this.types$ = data['results']
+  	});
+  }
+
+  onClick(type: Event) {
+    this.eventClicked.emit(type)
   }
 
 }

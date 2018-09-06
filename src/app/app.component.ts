@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'pokemon-by-type';
+
+  @ViewChild(PokemonListComponent) list: PokemonListComponent;
+
+  childTypeClicked(type: Event) {
+    this.list.updatePokemonList(type);
+  }
 }
