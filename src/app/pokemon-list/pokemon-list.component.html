@@ -1,5 +1,9 @@
-<ul>
-	<li *ngFor="let pokemon of currentPokemonList$">
-		{{ pokemon.pokemon.name }}
-	</li>
-</ul>
+<div class="main-content {{ currentType$ }}">
+	<h1 [@listStagger]="listState$">{{ capitalizeFirstLetter(currentType$) }}</h1>
+
+	<ul class="pokemon-list" [@listStagger]="listState$">
+		<li class="pokemon-list-item" *ngFor="let pokemon of currentPokemonList$">
+			<span>{{ pokemon.pokemon.name }}</span>
+		</li>
+	</ul>
+</div>

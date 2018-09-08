@@ -9,7 +9,7 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
   getTypes() {
-  	return this.http.get('https://pokeapi.co/api/v2/type')
+  	return this.http.get('https://pokeapi.co/api/v2/type');
   }
 
   getPokemonByType(type) {

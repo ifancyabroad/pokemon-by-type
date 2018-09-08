@@ -1,6 +1,6 @@
 <nav>
-	<ul>
-		<li *ngFor="let type of types$">
+	<ul class="type-list">
+		<li class="type-list-item {{ type.name.toLowerCase() }}" *ngFor="let type of types$" [ngStyle]="{'width': currentType$ == type.name.toLowerCase() ? '120%' : '100%'}">
 			<button class="btn-type" type="button" (click)="onClick(type.name)">{{ type.name }}</button>
 		</li>
 	</ul>
