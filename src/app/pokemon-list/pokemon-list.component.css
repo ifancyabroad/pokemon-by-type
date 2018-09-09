@@ -17,16 +17,40 @@
 .pokemon-list-item {
 	text-align: center;
 	font-size: 1.2em;
-	height: 60px;
-	width: 200px;
-	line-height: 60px;
+	height: fit-content;
+	width: 250px;
 	margin: 6px;
+	padding: 4px; 
 	box-shadow: 2px 2px 6px 0px #2b2b2b;
-	background-color: #fff;
+	background-color: #e2e2e2;
+	border-radius: 10px;
+	transition: 0.2s;
 }
 
-.pokemon-list-item span {
-	display: inline-block;
-  vertical-align: middle;
-  line-height: normal;
+.pokemon-list-item:hover {
+	cursor: pointer;
+	background-color: #444!important;
+}
+
+.white-background {
+	background-color: white;
+	border-radius: 10px;
+	margin: 4px;
+	padding: 5px;
+}
+
+.pokemon-detail {
+	display: flex;
+	justify-content: center;
+}
+
+.pokemon-detail.white-background {
+	margin-top: 8px;
+}
+
+.pokemon-type {
+	color: white;
+	text-shadow: 1px 1px 2px #3b3b3b;
+	border-radius: 5px;
+	padding: 3px;
 }

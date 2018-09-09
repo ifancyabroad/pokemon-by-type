@@ -15,4 +15,8 @@ export class DataService {
   getPokemonByType(type) {
   	return this.http.get(`https://pokeapi.co/api/v2/type/${type}`);
   }
+
+  getPokemon(name) {
+  	return this.http.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
+  }
 }

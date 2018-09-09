@@ -2,8 +2,25 @@
 	<h1 [@listStagger]="listState$">{{ capitalizeFirstLetter(currentType$) }}</h1>
 
 	<ul class="pokemon-list" [@listStagger]="listState$">
-		<li class="pokemon-list-item" *ngFor="let pokemon of currentPokemonList$">
-			<span>{{ pokemon.pokemon.name }}</span>
+		<li class="pokemon-list-item" [@reveal]="currentPokemon$" (click)="updatePokemon(pokemon.pokemon.name)" *ngFor="let pokemon of currentPokemonList$" [ngStyle]="{'background-color': (currentPokemon$) && (currentPokemon$.name == pokemon.pokemon.name) ? '#444' : '#e2e2e2'}">
+			<p class="white-background">#{{ extractPokemonNumber(pokemon.pokemon.url) }} <strong>{{ capitalizeFirstLetter(pokemon.pokemon.name) }}</strong></p>
+			<div class="pokemon-data" *ngIf="currentPokemon$" [hidden]="currentPokemon$.name != pokemon.pokemon.name">
+				<figure class="pokemon-detail white-background">
+					<img src="{{ currentPokemon$.sprites.front_default }}">
+					<img src="{{ currentPokemon$.sprites.front_shiny }}">
+				</figure>
+				<div class="pokemon-detail">
+					<p class="white-background"><strong>Height</strong> {{ currentPokemon$.height / 10 }}m</p>
+					<p class="white-background"><strong>Weight</strong> {{ currentPokemon$.weight / 10 }}kg</p>
+				</div>
+				<p class="white-background">
+					<strong>Type: </strong>
+					<span class="pokemon-type {{ currentPokemon$.types[0].type.name }}">{{ capitalizeFirstLetter(currentPokemon$.types[0].type.name) }}</span>
+					<span *ngIf="currentPokemon$.types[1]"> / 
+						<span class="pokemon-type {{ currentPokemon$.types[1].type.name }}">{{ capitalizeFirstLetter(currentPokemon$.types[1].type.name) }}</span>
+					</span>
+				</p>
+			</div>
 		</li>
 	</ul>
 </div>
