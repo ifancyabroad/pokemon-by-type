@@ -2,9 +2,12 @@
 	<h1 [@listStagger]="listState$">{{ capitalizeFirstLetter(currentType$) }}</h1>
 
 	<ul class="pokemon-list" [@listStagger]="listState$">
-		<li class="pokemon-list-item" [@reveal]="currentPokemon$" (click)="updatePokemon(pokemon.pokemon.name)" *ngFor="let pokemon of currentPokemonList$" [ngStyle]="{'background-color': (currentPokemon$) && (currentPokemon$.name == pokemon.pokemon.name) ? '#444' : '#e2e2e2'}">
+		<li class="pokemon-list-item" [@reveal]="currentPokemon$" (click)="updatePokemon(pokemon.pokemon.name, $event)" *ngFor="let pokemon of currentPokemonList$" [ngStyle]="{'background-color': (currentPokemon$) && (currentPokemon$.name == pokemon.pokemon.name) ? '#444' : '#e2e2e2'}">
+			<div class="overlay">
+				<div class="spinner" [hidden]="true"><i class="fas fa-spinner fa-spin"></i></div>
+			</div>
 			<p class="white-background">#{{ extractPokemonNumber(pokemon.pokemon.url) }} <strong>{{ capitalizeFirstLetter(pokemon.pokemon.name) }}</strong></p>
-			<div class="pokemon-data" *ngIf="currentPokemon$" [hidden]="currentPokemon$.name != pokemon.pokemon.name">
+			<div class="pokemon-data" *ngIf="currentPokemon$ && (currentPokemon$.name == pokemon.pokemon.name)">
 				<figure class="pokemon-detail white-background">
 					<img src="{{ currentPokemon$.sprites.front_default }}">
 					<img src="{{ currentPokemon$.sprites.front_shiny }}">

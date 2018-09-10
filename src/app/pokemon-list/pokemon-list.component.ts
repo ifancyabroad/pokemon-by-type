@@ -44,6 +44,11 @@ export class PokemonListComponent implements OnInit {
 		return string.charAt(0).toUpperCase() + string.slice(1);
 	}
 
+	toggleLoader(elem) {
+		elem.firstChild.hidden ? elem.firstChild.hidden = false : elem.firstChild.hidden = true;
+		elem.style.backgroundColor ? elem.style.backgroundColor = '' : elem.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+	}
+
 	updatePokemonList(type) {
 		this.data.getPokemonByType(type).subscribe(data => {
 			this.toggleState();
@@ -55,19 +60,21 @@ export class PokemonListComponent implements OnInit {
 		});
 	}
 
-	updatePokemon(name) {
+	updatePokemon(name, event) {
+		this.toggleLoader(event.target);
 		this.data.getPokemon(name).subscribe(data => {
 			this.currentPokemon$ = data;
+			this.toggleLoader(event.target);
 		})
 	}
 
 	extractPokemonNumber(url) {
 		let regex = /\d/g;
 		let num = url.match(regex).slice(1).join("");
-		if (Number(url.match(regex).slice(1).join("")) > 810) {
+		if (Number(num) > 810) {
 			return 'N/A';
 		} else {
-			return url.match(regex).slice(1).join("");
+			return num;
 		}
 	}
 
