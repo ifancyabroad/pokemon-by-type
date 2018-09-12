@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { DataService } from '../data.service';
 import { Observable } from 'rxjs';
 import { trigger,style,transition,animate,keyframes,query,stagger,state } from '@angular/animations';
@@ -21,7 +21,7 @@ import { trigger,style,transition,animate,keyframes,query,stagger,state } from '
 		trigger('reveal', [
 			transition('* <=> *', [
 				style({height: '41px'}),
-				animate('550ms ease-out')
+				animate('700ms ease-out')
 			])
 		])
 	]
@@ -33,11 +33,12 @@ export class PokemonListComponent implements OnInit {
 	currentType$: string = 'normal';
 	listState$: string = 'out';
 
+	@Output() typeEvent = new EventEmitter();
+
 	constructor(private data: DataService) { }
 
 	ngOnInit() {
 		this.updatePokemonList('normal');
-		this.toggleState();
 	}
 
 	capitalizeFirstLetter(string) {
@@ -51,11 +52,12 @@ export class PokemonListComponent implements OnInit {
 
 	updatePokemonList(type) {
 		this.data.getPokemonByType(type).subscribe(data => {
-			this.toggleState();
+			if (this.listState$ === 'in') { this.toggleState(); };
 			setTimeout(() => {
 				this.currentType$ = type;
 				this.currentPokemonList$ = data['pokemon'];
 				this.toggleState()
+				this.typeEvent.emit(this.currentType$);
 			}, 550);
 		});
 	}

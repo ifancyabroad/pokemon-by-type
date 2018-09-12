@@ -8,6 +8,7 @@ import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 })
 export class AppComponent {
   title = 'pokemon-by-type';
+  type: string;
 
   @ViewChild(PokemonListComponent) list: PokemonListComponent;
 

@@ -85,6 +85,7 @@
 
 .pokemon-detail.white-background {
 	margin-top: 8px;
+	min-height: 100px;
 }
 
 .pokemon-type {

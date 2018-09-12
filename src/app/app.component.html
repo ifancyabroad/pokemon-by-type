@@ -1,8 +1,8 @@
-<main>
+<main class="{{ type }}">
   <section id="sidebar">
     <app-sidebar (eventClicked)="childTypeClicked($event)"></app-sidebar>    
   </section>
   <section id="content">
-    <app-pokemon-list></app-pokemon-list>    
+    <app-pokemon-list (typeEvent)="type=$event"></app-pokemon-list>    
   </section>
 </main>
