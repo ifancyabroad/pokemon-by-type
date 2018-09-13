@@ -3,7 +3,6 @@ nav {
 	top: 0;
 	box-sizing: border-box;
 	height: 100vh;
-	width: 90px;
 }
 
 .menu-toggle {
@@ -20,6 +19,7 @@ nav {
 
 .type-list {
 	height: 100%;
+	width: 90px;
 	display: flex;
 	flex-direction: column;
 	box-shadow: 4px 0px 6px #414141;

@@ -1,9 +1,9 @@
-<nav [@toggleMenu]="menuState$">
-	<div class="menu-toggle">
+<nav>
+	<div class="menu-toggle" [ngStyle]="{'left': menuState$ == 'show' ? '100px' : '10px'}">
 		<i class="fas fa-bars" (click)="toggleMenu('show')" *ngIf="menuState$ == 'hide'"></i>
 		<i class="fas fa-times" (click)="toggleMenu('hide')" *ngIf="menuState$ == 'show'"></i>		
 	</div>
-	<ul class="type-list">
+	<ul class="type-list" *ngIf="menuState$ == 'show'">
 		<li class="type-list-item {{ type.name.toLowerCase() }}" *ngFor="let type of types$" [ngStyle]="{'width': currentType$ == type.name.toLowerCase() ? '120%' : '100%'}">
 			<button class="btn-type" type="button" (click)="onClick(type.name)">{{ type.name }}</button>
 		</li>
