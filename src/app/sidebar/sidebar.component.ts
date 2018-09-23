@@ -8,14 +8,14 @@ import { trigger,style,transition,animate,keyframes,query,stagger,state } from '
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css'],
-  // animations: [
-  //   trigger('toggleMenu', [
-  //     state('show', style({transform: 'translateX(0)', position: 'sticky'})),
-  //     state('hide', style({transform: 'translateX(-105%)', position: 'fixed'})),
-  //     transition('show => hide', animate('500ms ease-out')),
-  //     transition('hide => show', animate('500ms ease-out'))
-  //   ]),
-  // ]
+  animations: [
+    trigger('toggleMenu', [
+      state('show', style({transform: 'translateX(0)'})),
+      state('hide', style({transform: 'translateX(-100%)'})),
+      transition('show => hide', animate('500ms ease-out')),
+      transition('hide => show', animate('500ms ease-out'))
+    ]),
+  ]
 })
 export class SidebarComponent implements OnInit {
 

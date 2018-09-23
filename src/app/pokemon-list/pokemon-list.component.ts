@@ -59,7 +59,7 @@ export class PokemonListComponent implements OnInit {
 				this.toggleState()
 				this.typeEvent.emit(this.currentType$);
 			}, 550);
-		});
+		}, error => alert('Failed to load data'));
 	}
 
 	updatePokemon(name, event) {
@@ -67,7 +67,7 @@ export class PokemonListComponent implements OnInit {
 		this.data.getPokemon(name).subscribe(data => {
 			this.currentPokemon$ = data;
 			this.toggleLoader(event.target);
-		})
+		}, error => alert('Failed to load data'))
 	}
 
 	extractPokemonNumber(url) {

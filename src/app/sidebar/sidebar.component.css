@@ -1,8 +1,9 @@
 nav {
-	position: sticky;
-	top: 0;
+	position: fixed;
 	box-sizing: border-box;
 	height: 100vh;
+	z-index: 1;
+	transition: transform 0.4s;
 }
 
 .menu-toggle {
@@ -32,10 +33,6 @@ nav {
 	overflow: hidden;
 }
 
-.type-list-item:hover {
-	width: 120%!important;
-}
-
 .btn-type {
 	color: #fff;
 	width: 100%;
@@ -49,4 +46,26 @@ nav {
 
 .btn-type:hover {
 	cursor: pointer;
+}
+
+@media screen and (max-height: 500px) {
+	.menu-toggle {
+		left: 190px;
+	}
+
+	.type-list {
+		width: 180px;
+		flex-direction: unset;
+		flex-wrap: wrap;
+	}
+
+	.type-list-item {
+		width: 50%;
+	}
+}
+
+@media screen and (min-height: 501px) {
+	.type-list-item:hover {
+		width: 120%;
+	}
 }

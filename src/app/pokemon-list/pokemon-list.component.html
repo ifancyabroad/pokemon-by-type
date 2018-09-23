@@ -1,5 +1,5 @@
 <div class="main-content">
-	<h1 [@listStagger]="listState$" [hidden]="!currentPokemonList$">{{ capitalizeFirstLetter(currentType$) }}</h1>
+	<h1 [@listStagger]="listState$" [hidden]="!currentPokemonList$">{{ currentType$ | uppercase }}</h1>
 
 	<ul class="pokemon-list" [@listStagger]="listState$">
 		<li class="pokemon-list-item" [@reveal]="currentPokemon$" (click)="updatePokemon(pokemon.pokemon.name, $event)" *ngFor="let pokemon of currentPokemonList$" [ngStyle]="{'background-color': (currentPokemon$) && (currentPokemon$.name == pokemon.pokemon.name) ? '#444' : '#e2e2e2'}">
