@@ -37,7 +37,7 @@ nav {
 	color: #fff;
 	width: 100%;
 	border: none;
-	background-color: unset;
+	background-color: transparent;
 	padding: 8px 10px;
 	font-weight: 700;
   text-shadow: 2px 2px 4px #3b3b3b;
@@ -55,7 +55,7 @@ nav {
 
 	.type-list {
 		width: 180px;
-		flex-direction: unset;
+		flex-direction: row;
 		flex-wrap: wrap;
 	}
 
