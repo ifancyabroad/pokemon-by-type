@@ -27,6 +27,7 @@ nav {
 }
 
 .type-list-item {
+	position: relative;
 	flex-grow: 1;
 	width: 100%;
 	transition: width 0.6s;
@@ -34,6 +35,9 @@ nav {
 }
 
 .btn-type {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
 	color: #fff;
 	width: 100%;
 	border: none;

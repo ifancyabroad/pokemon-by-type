@@ -1,4 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Inject, Renderer2 } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 
 @Component({
@@ -8,11 +9,16 @@ import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
 })
 export class AppComponent {
   title = 'pokemon-by-type';
-  type: string;
+
+  constructor(private renderer: Renderer2, @Inject(DOCUMENT) private document: Document) { }
 
   @ViewChild(PokemonListComponent) list: PokemonListComponent;
 
   childTypeClicked(type: Event) {
     this.list.updatePokemonList(type);
+  }
+
+  changeBackground(type: Event) {
+    this.renderer.setAttribute(this.document.body, 'class', String(type));    
   }
 }
